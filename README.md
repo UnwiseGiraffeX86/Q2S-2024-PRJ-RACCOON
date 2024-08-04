@@ -1,4 +1,7 @@
-# Q2S 2024 PRJ RACCOON
+# Q2S 2024 Project RACCOON
+
+## Project Description
+Poject RACCOON is a multi-function environmental PocketQube satellite designed for the Qube2Space 2024 competition. This project aims to collect comprehensive data on atmospheric conditions at high altitudes. Equipped with a variety of sensors, Project RACCOON will measure temperature, barometric pressure, humidity, air quality index (AQI), volatile organic compounds (VOC), nitrogen oxides (NOx), carbon monoxide (CO), and capture high-resolution and thermal images. Additionally, it includes a GPS module for geolocation data and a LoRa module for long-range wireless communication.
 
 ## Component List
 
