@@ -15,9 +15,6 @@ Project RACCOON is a multi-function environmental PocketQube satellite designed 
 | Camera Module          | OV2640         | [Link](https://www.optimusdigital.ro/ro/module-camere/3277-modul-camera-ov2640.html) |
 | Thermal Camera Module  | AMG8833        | [Link](https://www.digikey.ro/en/products/detail/panasonic-electronic-components/AMG8833/5850779) |
 | Microcontroller        | Raspberry Pi RP2040 | [Link](https://www.tme.eu/ro/details/sc0915/raspberry-pi-minicomputers/raspberry-pi/raspberry-pi-pico/) |
-| Solar Panels (x4)      | 5V 1W each     | [Link](https://www.optimusdigital.ro/ro/solare/14185-panou-solar-5v-1w.html) |
-| LiPo Battery           | 3.7V 1000mAh   | [Link](https://www.optimusdigital.ro/ro/acumulatori-litiu/287-acumulator-li-po-37v-1000mah.html) |
-| Charging Circuit       | Custom Design  | -                                         |
 | 6-DOF IMU              | BMI323         | [Link](https://www.digikey.ro/en/products/detail/bosch-sensortec/BMI323/16719593) |
 
 ## Notes
