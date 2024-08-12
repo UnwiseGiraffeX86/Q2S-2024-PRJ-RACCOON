@@ -1,23 +1,97 @@
-# Q2S 2024 Project RACCOON
+# 🚀 Q2S 2024 Project RACCOON
 
-## Project Description
-Project RACCOON is a multi-function environmental PocketQube satellite designed for the Qube2Space 2024 competition. This project aims to collect comprehensive data on atmospheric conditions at high altitudes. Equipped with a variety of sensors, Project RACCOON will measure temperature, barometric pressure, humidity, air quality index (AQI), volatile organic compounds (VOC), nitrogen oxides (NOx), carbon monoxide (CO), and capture high-resolution and thermal images. Additionally, it includes a GPS module for geolocation data and a LoRa module for long-range wireless communication. The project will be powered by a Raspberry Pi RP2040, four solar panels, and a LiPo battery with a custom charging circuit.
+## 🛰 Project Overview
+**Project RACCOON** is a cutting-edge, multi-function environmental PocketQube satellite designed for the **Qube2Space 2024** competition. Our mission is to push the boundaries of space-based environmental monitoring and data collection using advanced sensors and AI-driven analysis. This README provides a detailed overview of our mission objectives, system architecture, and power consumption.
 
-## Component List
+---
 
-| Component              | Model          | Link                                      |
-|------------------------|----------------|-------------------------------------------|
-| Temperature Monitoring, Barometric Pressure, Humidity Monitoring, AQI | BME680         | [Link](https://www.digikey.ro/en/products/detail/bosch-sensortec/BME680/7401317) |
-| VOC+NOx Sensor         | SGP41 DR4      | [Link](https://www.tme.eu/ro/details/sgp41-d-r4/senzori-de-gaz/sensirion/3-000-060/) |
-| CO Sensor              | MQ7            | [Link](https://www.tme.eu/ro/details/mq-7b/senzori-de-gaz/winsen/?brutto=1&currency=USD&gad_source=1&gclid=Cj0KCQjw-uK0BhC0ARIsANQtgGOsI7EkvtdED2ZxLiqlhXaZKtODT48B4xei-8gTNv-doRfv31SX0t4aAt5JEALw_wcB) |
-| GPS Module             | GY NEO6MV2     | [Link](https://www.optimusdigital.ro/ro/module-gps/2387-modul-gps-cu-antena-gy-neo6mv2.html) |
-| LoRa Module            | SX1276         | [Link](https://www.optimusdigital.ro/ro/module-wireless/2468-modul-wireless-lora-sx1276-433mhz.html) |
-| Camera Module          | OV2640         | [Link](https://www.optimusdigital.ro/ro/module-camere/3277-modul-camera-ov2640.html) |
-| Thermal Camera Module  | AMG8833        | [Link](https://www.digikey.ro/en/products/detail/panasonic-electronic-components/AMG8833/5850779) |
-| Microcontroller        | Raspberry Pi RP2040 | [Link](https://www.tme.eu/ro/details/sc0915/raspberry-pi-minicomputers/raspberry-pi/raspberry-pi-pico/) |
-| 6-DOF IMU              | BMI323         | [Link](https://www.digikey.ro/en/products/detail/bosch-sensortec/BMI323/16719593) |
+## 🎯 Primary Mission: Flight Data Measurement
+### Mission Objective:
+Measure and store atmospheric temperature and acceleration on three axes throughout the entire flight.
 
-## Notes
-- The Raspberry Pi RP2040 will serve as the main microcontroller for the project, providing ample processing power for sensor data acquisition and communication.
-- The solar panels will be used to charge the LiPo battery, ensuring continuous power supply during the mission. A custom-designed charging circuit will manage the charging process. The design includes essential components such as a charge controller IC, protection circuitry, and power management components.
-- The BMI323 IMU will provide detailed motion sensing and orientation data, enhancing the project's capability to monitor environmental and positional changes.
+### Mission Details:
+- **Parameters Measured**:
+  - **Atmospheric Temperature**: Collected using the BME680 sensor.
+  - **Acceleration (3 Axes)**: Captured using the ICM-20600 6-DOF IMU.
+- **Sampling Frequency**: Minimum of 5 Hz (5 samples per second).
+- **Data Storage**: All data is stored on an SD card in `.csv` or `.txt` format for post-flight analysis.
+- **Post-Flight Analysis**: Data will be used to calculate altitude and generate graphs, such as acceleration vs. altitude.
+
+---
+
+## 🌟 Secondary Missions
+
+### 1. **ENVIRO** (Environmental Monitoring and Data Collection)
+**Objective**: Collect comprehensive atmospheric data to complement the primary mission.
+
+- **Parameters Measured**:
+  - **Barometric Pressure**
+  - **Humidity**
+  - **Air Quality Index (AQI)**
+  - **Volatile Organic Compounds (VOC)**
+  - **Nitrogen Oxides (NOx)**
+  - **Carbon Monoxide (CO)**
+  - **Ultraviolet (UV) Light Intensity**
+- **Components Used**: BME680, SGP41-D-R4, MQ-7B, GUVA S12SD.
+- **Purpose**: Provide valuable data for environmental studies and enrich primary mission data.
+
+### 2. **IMAGINE** (Imaging and Geospatial Observation)
+**Objective**: Capture high-resolution and thermal images of Earth from varying altitudes.
+
+- **Parameters Measured**:
+  - **High-Resolution Visual Imagery**
+  - **Thermal Imagery**
+- **Components Used**: OV2640 (camera), AMG8833 (thermal camera).
+- **Purpose**: Enhance environmental data with visual and thermal correlations.
+
+### 3. **SENTRY** (Sensor-Based Anomaly Detection Using AI)
+**Objective**: Use AI/ML to detect anomalies in environmental data.
+
+- **Parameters Analyzed**:
+  - **Temperature**
+  - **Pressure**
+  - **Humidity**
+  - **AQI**
+  - **VOC**
+  - **NOx**
+  - **CO**
+  - **UV Intensity**
+- **Components Used**: ESP32-S3 for real-time ML processing.
+- **ML/AI Features**:
+  - **Model**: Anomaly detection trained on historical atmospheric data.
+  - **Purpose**: Identify unusual patterns that may indicate anomalies.
+
+---
+
+## ⚡ Power Consumption Overview
+| Component                   | Mode                           | Average Power Consumption (mA) |
+|-----------------------------|--------------------------------|--------------------------------|
+| **ESP32-S3**                 | Active (ML Processing)         | 240                            |
+| **BME680**                   | Active                         | 2.1                            |
+| **ICM-20600 IMU**            | Active                         | 1.5                            |
+| **SGP41-D-R4**               | Active                         | 2.6                            |
+| **MQ-7B**                    | Active (Reduced Sampling)      | 30                             |
+| **GY NEO6MV2 GPS**           | Active                         | 35                             |
+| **RFM96 LoRa Module**        | Sleep (Most of the Time)       | 1µA (negligible)               |
+| **OV2640 Camera**            | Active (Every 10 Seconds)      | 1.5                            |
+| **AMG8833 Thermal Camera**   | Active (Intermittent)          | 4.5                            |
+| **GUVA S12SD UV Sensor**     | Active                         | 0.1                            |
+| **Total Average Consumption**|                                | **317.3 mA**                   |
+
+---
+
+## 📋 Final Notes
+- **Optimize Sensor Usage**: Intermittent operation and efficient data handling are key to staying within the power budget.
+- **Power Management**: The ESP32-S3’s low-power modes will be leveraged to conserve energy during inactive periods.
+- **Post-Mission Analysis**: The collected data will be instrumental in generating insights and visuals to fulfill the primary mission and contribute to scientific understanding.
+
+---
+
+## 🛠️ Project Contributors
+- **Geala Stefan** - Project Lead
+- **Stanescu Serban** - Software & AI/ML Developer
+- **Craciunescu Stefan** - Hardware & Electronics Specialist
+- **Dumitrescu Ioan Valeriu** - Data Analyst & Visualization Expert
+- **Dumitrescu Radu** - CAD & Design Specialist
+
+
